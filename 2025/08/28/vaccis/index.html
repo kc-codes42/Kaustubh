@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>Offline AI Voice Assistant with Avatar - A Fully Local AI Companion - Kaustubh Chauhan</title>
+  
+    <link rel="shortcut icon" href="/Kaustubh/img/mypfp1-modified.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  <meta name="description" content="ConceptThis project began as an attempt to create a completely offline, privacy-focused AI voice assistant that could interact naturally, both vocally and visually.It merges speech recognition, natura">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Offline AI Voice Assistant with Avatar - A Fully Local AI Companion">
+<meta property="og:url" content="https://kc-codes42.github.io/Kaustubh/2025/08/28/vaccis/index.html">
+<meta property="og:site_name" content="Kaustubh Chauhan">
+<meta property="og:description" content="ConceptThis project began as an attempt to create a completely offline, privacy-focused AI voice assistant that could interact naturally, both vocally and visually.It merges speech recognition, natura">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/img/vcassisimg/vcassis.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/2025/08/28/vaccis/img/assistant-architecture.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/img/vcassisimg/media001.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/2025/08/28/vaccis/img/performance-metrics.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/2025/08/28/vaccis/img/assistant-ui-3.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/2025/08/28/vaccis/img/gallery-1.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/2025/08/28/vaccis/img/gallery-2.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/2025/08/28/vaccis/img/gallery-3.webp">
+<meta property="article:published_time" content="2025-08-28T14:30:00.000Z">
+<meta property="article:modified_time" content="2025-10-05T20:16:47.053Z">
+<meta property="article:author" content="Kaustubh Chauhan">
+<meta property="article:tag" content="ai">
+<meta property="article:tag" content="avatar">
+<meta property="article:tag" content="development">
+<meta property="article:tag" content="machine-learning">
+<meta property="article:tag" content="offline">
+<meta property="article:tag" content="voice-assistant">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kc-codes42.github.io/Kaustubh/img/vcassisimg/vcassis.webp">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/var.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/main.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/typography.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/nav.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/footer.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/Kaustubh/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<script src="/Kaustubh/js/head.js"></script>
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/Kaustubh/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+    data-nav-blur-gradient="true"
+  >
+    
+<script src="/Kaustubh/js/body-top.js"></script>
+
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    
+
+<div class="nav-mask">
+  <div order="1"></div>
+  <div order="2"></div>
+  <div order="3"></div>
+  <div order="4"></div>
+  <div order="5"></div>
+  <div order="6"></div>
+</div>
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/Kaustubh/">kc_codes</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/Kaustubh/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/Kaustubh/friends" style="--index: 1">Friends</a>
+      
+      <a class="nav-item" href="/Kaustubh/projects" style="--index: 2">Projects</a>
+      
+      <a class="nav-item" href="/Kaustubh/archives" style="--index: 3">Archives</a>
+      
+      <a class="nav-item" href="/Kaustubh/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/kc-codes42" style="--index: 5"><i class="bi bi-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.linkedin.com/in/kaustubh-chauhan-5304b2252/" style="--index: 6"><i class="bi bi-linkedin"></i></a>
+      
+      <a class="nav-item is-icon" href="/Kaustubh/search" style="--index: 7"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" data-pagefind-body>
+      
+<article class="post">
+  
+  <div class="meta">
+    
+    <div class="categories text-uppercase">
+    
+      <a href="/Kaustubh/categories/Blog/">Blog</a>
+    
+    </div>
+    
+
+    
+    <time class="date" datetime="2025-08-28T20:00:00+05:30">
+      August 28, 2025
+    </time>
+    
+
+    <h1 class="title" data-pagefind-meta="title">Offline AI Voice Assistant with Avatar - A Fully Local AI Companion</h1>
+  </div>
+
+  <div class="content">
+    <h2 id="Concept"><a href="#Concept" class="headerlink" title="Concept"></a>Concept</h2><p>This project began as an attempt to create a <strong>completely offline, privacy-focused AI voice assistant</strong> that could interact naturally, both vocally and visually.<br>It merges <strong>speech recognition</strong>, <strong>natural language understanding</strong>, <strong>text-to-speech synthesis</strong>, and <strong>avatar video animation</strong> — all running locally on consumer hardware.</p>
+<p>My core motivation was to remove cloud dependencies from the AI interaction pipeline. Every response, every facial animation, every word spoken is processed on-device.</p>
+<p align="center">
+  <img src="/Kaustubh/img/vcassisimg/vcassis.webp" alt="The initial web interface of the assistant, showing the main dashboard and voice controls." />
+</p>
+
+<hr>
+<h2 id="Design-and-Architecture"><a href="#Design-and-Architecture" class="headerlink" title="Design and Architecture"></a>Design and Architecture</h2><p>The project is divided into multiple modular subsystems:</p>
+<ul>
+<li><strong>Whisper ASR</strong> for speech-to-text transcription  </li>
+<li><strong>Qwen Chat Model</strong> for local language understanding  </li>
+<li><strong>Edge TTS &#x2F; Coqui TTS</strong> for speech synthesis  </li>
+<li><strong>SadTalker &#x2F; Wav2Lip</strong> for avatar lip-sync video generation  </li>
+<li><strong>Gradio Web Interface</strong> for user interaction</li>
+</ul>
+<p>All these modules communicate through asynchronous tasks, managed within a unified Python environment.</p>
+<p align="center">
+  <img src="img/assistant-architecture.webp" alt="Block diagram showing the system architecture linking ASR, NLP, TTS, and Avatar Generation modules." />
+</p>
+
+<p>Each component is optimized for efficiency — quantized models, GPU acceleration, and parallel pipelines minimize latency without sacrificing realism.</p>
+<hr>
+<h2 id="Interface-and-Experience"><a href="#Interface-and-Experience" class="headerlink" title="Interface and Experience"></a>Interface and Experience</h2><p>The <strong>web interface</strong>, built with <a target="_blank" rel="noopener" href="https://gradio.app/">Gradio</a>, serves as the interaction layer between the user and the AI.<br>Its layout is designed for focus and flow — from microphone activation to avatar playback, all operations are visible in one unified workspace.</p>
+<p align="center">
+  <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7369692382520410113?compact=1" height="399" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+</p>
+
+
+<h3 id="Visual-Design"><a href="#Visual-Design" class="headerlink" title="Visual Design"></a>Visual Design</h3><ul>
+<li>Minimal color palette for high contrast  </li>
+<li>Monospaced and modern sans-serif typography  </li>
+<li>Responsive grid layout with modular panels  </li>
+<li>Animated transitions during avatar video rendering</li>
+</ul>
+<hr>
+<h2 id="Technical-Deep-Dive"><a href="#Technical-Deep-Dive" class="headerlink" title="Technical Deep Dive"></a>Technical Deep Dive</h2><h3 id="Audio-Processing"><a href="#Audio-Processing" class="headerlink" title="Audio Processing"></a>Audio Processing</h3><p>Audio is captured and chunked in real-time using <code>sounddevice</code>, then transcribed via <a target="_blank" rel="noopener" href="https://github.com/openai/whisper">Whisper</a>.<br>Processing runs in a dedicated thread to avoid blocking the response loop.</p>
+<h3 id="Language-Model"><a href="#Language-Model" class="headerlink" title="Language Model"></a>Language Model</h3><p>The conversation engine is powered by <a target="_blank" rel="noopener" href="https://huggingface.co/Qwen/Qwen1.5-1.8B-Chat">Qwen 1.5B Chat</a>, providing context-aware responses without relying on remote APIs.</p>
+<h3 id="Voice-Generation"><a href="#Voice-Generation" class="headerlink" title="Voice Generation"></a>Voice Generation</h3><p>The system integrates <a target="_blank" rel="noopener" href="https://github.com/rany2/edge-tts">Edge TTS</a> for fast speech synthesis and <a target="_blank" rel="noopener" href="https://coqui.ai/">Coqui TTS</a> for more expressive, locally generated voices.</p>
+<h3 id="Avatar-Rendering"><a href="#Avatar-Rendering" class="headerlink" title="Avatar Rendering"></a>Avatar Rendering</h3><p>Two backends are supported:</p>
+<ul>
+<li><strong>SadTalker</strong> — photorealistic animation and head motion.</li>
+<li><strong>Wav2Lip</strong> — precise lip synchronization for minimal motion setups.</li>
+</ul>
+<p>Both are automatically configured at runtime, with fallback handling for missing checkpoints.</p>
+<p align="center">
+  <img src="/Kaustubh/img/vcassisimg/media001.webp" alt="A generated avatar video demonstrating lip-sync precision and natural motion." style="max-width: 100%; width: 320px; height: auto;" />
+</p>
+
+
+<div class="container view-animation-demo">
+  <div class="dot"></div>
+</div>
+
+<style>
+@keyframes view-animation-demo-animation {
+  0% {
+    opacity: 0.6;
+    width: 0%;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+    width: 100%;
+  }
+}
+
+.view-animation-demo > .dot {
+  background-color: var(--color-text-primary);
+  height: 4px;
+  border-radius: 2px;
+
+  animation: view-animation-demo-animation linear both;
+  animation-timeline: view(block);
+}
+</style>
+
+
+<hr>
+<h2 id="Development-Log"><a href="#Development-Log" class="headerlink" title="Development Log"></a>Development Log</h2><ul>
+<li><strong>April 2025:</strong> Initial prototype integrating Whisper + Qwen  </li>
+<li><strong>May 2025:</strong> Added TTS pipeline and conversation memory  </li>
+<li><strong>June 2025:</strong> Integrated SadTalker with optimized FFmpeg handling  </li>
+<li><strong>August 2025:</strong> Implemented real-time audio capture and thread-safe buffering  </li>
+<li><strong>October 2025:</strong> UI refinements and modular configuration system completed</li>
+</ul>
+<hr>
+<h2 id="Performance-and-Optimization"><a href="#Performance-and-Optimization" class="headerlink" title="Performance and Optimization"></a>Performance and Optimization</h2><p>Testing was done on a Lenovo LOQ laptop (Intel i5-13450HX, RTX 3050 6GB VRAM, 16GB RAM).<br>Results:</p>
+<ul>
+<li><strong>ASR latency:</strong> ~1.8s average  </li>
+<li><strong>Response generation:</strong> &lt;2s with 1.5B model  </li>
+<li><strong>TTS synthesis:</strong> ~1.3s average  </li>
+<li><strong>Avatar rendering:</strong> 4–6s (depending on backend)</li>
+</ul>
+<figure>
+  <img src="img/performance-metrics.webp" alt="Performance chart comparing processing times across each subsystem."/>
+  <figcaption>Measured under local execution on Windows 11 with CUDA acceleration.</figcaption>
+</figure>
+
+<hr>
+<h2 id="Current-Progress"><a href="#Current-Progress" class="headerlink" title="Current Progress"></a>Current Progress</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> Local conversational engine  </li>
+<li><input checked="" disabled="" type="checkbox"> Whisper ASR integration  </li>
+<li><input checked="" disabled="" type="checkbox"> Dual TTS backends (Edge + Coqui)  </li>
+<li><input checked="" disabled="" type="checkbox"> SadTalker and Wav2Lip support  </li>
+<li><input checked="" disabled="" type="checkbox"> Web interface with Gradio  </li>
+<li><input disabled="" type="checkbox"> Avatar customization system  </li>
+<li><input disabled="" type="checkbox"> Memory persistence  </li>
+<li><input disabled="" type="checkbox"> Mobile-friendly UI</li>
+</ul>
+<div class="container si-demo">
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+</div>
+
+<style>
+.si-demo {
+  display: flex;
+}
+
+@keyframes si-demo-animation {
+  0% {
+    opacity: 0;
+    translate: 0 16px;
+  }
+  50% {
+    opacity: 1;
+    translate: 0;
+  }
+  100% {
+    opacity: 0;
+    translate: 0 -16px;
+  }
+}
+
+.si-demo > .item {
+  flex-grow: 1;
+  height: 48px;
+  background-color: var(--color-text-primary);
+  animation: si-demo-animation 2s infinite;
+  animation-delay: calc(sibling-index() * 0.1s);
+
+  --r: var(--radius-small);
+}
+
+.si-demo > .item:first-child {
+  border-top-left-radius: var(--r);
+  border-bottom-left-radius: var(--r);
+}
+
+.si-demo > .item:last-child {
+  border-top-right-radius: var(--r);
+  border-bottom-right-radius: var(--r);
+}
+</style>
+
+<p align="center">
+  <img src="img/assistant-ui-3.webp" alt="Dashboard snapshot showing active modules and conversation logs." />
+</p>
+
+<hr>
+<h2 id="Future-Goals"><a href="#Future-Goals" class="headerlink" title="Future Goals"></a>Future Goals</h2><ul>
+<li>Expand to multi-character avatars  </li>
+<li>Integrate facial emotion control  </li>
+<li>Add offline translation pipeline  </li>
+<li>Create system tray background service  </li>
+<li>Support for personal voice cloning</li>
+</ul>
+<hr>
+<h2 id="Acknowledgements"><a href="#Acknowledgements" class="headerlink" title="Acknowledgements"></a>Acknowledgements</h2><p>This project stands on the work of open communities and frameworks such as:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/openai/whisper">OpenAI Whisper</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/Qwen">Qwen Chat Models</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/OpenTalker/SadTalker">SadTalker</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Rudrabha/Wav2Lip">Wav2Lip</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://coqui.ai/">Coqui TTS</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://gradio.app/">Gradio</a></li>
+</ul>
+<hr>
+<h2 id="Snapshot-Gallery"><a href="#Snapshot-Gallery" class="headerlink" title="Snapshot Gallery"></a>Snapshot Gallery</h2><p align="center">
+  <img src="img/gallery-1.webp" alt="Avatar rendering pipeline preview." />
+  <img src="img/gallery-2.webp" alt="Conversation memory module visualization." />
+  <img src="img/gallery-3.webp" alt="User interface dark mode preview." />
+</p>
+
+<hr>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>Released under the <a target="_blank" rel="noopener" href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
+<p><strong>Author:</strong> <a target="_blank" rel="noopener" href="https://github.com/kc-codes42">KC</a><br><strong>Website:</strong> <a target="_blank" rel="noopener" href="https://kc.codes/">kc.codes</a><br><strong>Email:</strong> <a href="mailto:&#99;&#111;&#x6e;&#x74;&#x61;&#99;&#x74;&#64;&#107;&#x63;&#x2e;&#x63;&#x6f;&#x64;&#x65;&#x73;">contact@kc.codes</a></p>
+
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by Kaustubh Chauhan, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+    <p class="tags">
+      <i class="bi bi-tags icon"></i>
+      
+      <a href="/Kaustubh/tags/ai/" class="tag">#ai</a>
+      
+      <a href="/Kaustubh/tags/voice-assistant/" class="tag">#voice-assistant</a>
+      
+      <a href="/Kaustubh/tags/avatar/" class="tag">#avatar</a>
+      
+      <a href="/Kaustubh/tags/offline/" class="tag">#offline</a>
+      
+      <a href="/Kaustubh/tags/machine-learning/" class="tag">#machine-learning</a>
+      
+      <a href="/Kaustubh/tags/development/" class="tag">#development</a>
+      
+    </p>
+    
+    
+  </div>
+  
+
+  <div class="container post-prev-next" data-pagefind-ignore>
+    <a class="next"></a>
+    
+    <a href="/Kaustubh/2025/07/26/pasifivisu/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">PaFiVisu - Pathfinding Algorithm Visualizer</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/Kaustubh/" class="item">Home</a>
+        
+        <a href="/Kaustubh/archives" class="item">Archives</a>
+        
+        <a href="/Kaustubh/tags" class="item">Tags</a>
+        
+        <a href="/Kaustubh/categories" class="item">Categories</a>
+        
+        <a href="/Kaustubh/search" class="item">Search</a>
+        
+        <a href="/Kaustubh/projects" class="item">Projects</a>
+        
+        <a href="/Kaustubh/resume" class="item">Resume</a>
+        
+        <a href="/Kaustubh/about" class="item">About</a>
+        
+        <a href="/Kaustubh/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/kc-codes42/SortSage" class="item">SortSage</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/kc-codes42/PaFiVisu" class="item">PaFiVisu</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/kc-codes42" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kaustubh-chauhan-5304b2252/" class="item">LinkedIn</a>
+        
+        <a href="mailto:kaustubhchauhan308@gmail.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 Kaustubh Chauhan</span>
+    
+    <br>
+    <span class="footer-extra-description">Feel free to reach out via GitHub, LinkedIn, or email.</span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/Kaustubh/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/Kaustubh/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

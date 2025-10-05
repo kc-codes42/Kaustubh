@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>PaFiVisu - Pathfinding Algorithm Visualizer - Kaustubh Chauhan</title>
+  
+    <link rel="shortcut icon" href="/Kaustubh/img/mypfp1-modified.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  <meta name="description" content="OverviewPaFiVisu is a modern web-based pathfinding algorithm visualizer built with Vanilla JavaScript and Tailwind CSS. It provides an interactive 2D grid to visualize algorithms like Breadth-First Se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PaFiVisu - Pathfinding Algorithm Visualizer">
+<meta property="og:url" content="https://kc-codes42.github.io/Kaustubh/2025/07/26/pasifivisu/index.html">
+<meta property="og:site_name" content="Kaustubh Chauhan">
+<meta property="og:description" content="OverviewPaFiVisu is a modern web-based pathfinding algorithm visualizer built with Vanilla JavaScript and Tailwind CSS. It provides an interactive 2D grid to visualize algorithms like Breadth-First Se">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/img/pafivisuimg/pasivisu.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/img/pafivisuimg/img001.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/img/pafivisuimg/img002.webp">
+<meta property="article:published_time" content="2025-07-26T11:57:58.000Z">
+<meta property="article:modified_time" content="2025-10-05T20:16:51.071Z">
+<meta property="article:author" content="Kaustubh Chauhan">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="pathfinding">
+<meta property="article:tag" content="tailwindcss">
+<meta property="article:tag" content="visualization">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kc-codes42.github.io/Kaustubh/img/pafivisuimg/pasivisu.webp">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/var.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/main.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/typography.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/nav.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/footer.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/Kaustubh/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<script src="/Kaustubh/js/head.js"></script>
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/Kaustubh/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+    data-nav-blur-gradient="true"
+  >
+    
+<script src="/Kaustubh/js/body-top.js"></script>
+
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    
+
+<div class="nav-mask">
+  <div order="1"></div>
+  <div order="2"></div>
+  <div order="3"></div>
+  <div order="4"></div>
+  <div order="5"></div>
+  <div order="6"></div>
+</div>
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/Kaustubh/">kc_codes</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/Kaustubh/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/Kaustubh/friends" style="--index: 1">Friends</a>
+      
+      <a class="nav-item" href="/Kaustubh/projects" style="--index: 2">Projects</a>
+      
+      <a class="nav-item" href="/Kaustubh/archives" style="--index: 3">Archives</a>
+      
+      <a class="nav-item" href="/Kaustubh/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/kc-codes42" style="--index: 5"><i class="bi bi-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.linkedin.com/in/kaustubh-chauhan-5304b2252/" style="--index: 6"><i class="bi bi-linkedin"></i></a>
+      
+      <a class="nav-item is-icon" href="/Kaustubh/search" style="--index: 7"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" data-pagefind-body>
+      
+<article class="post">
+  
+  <div class="cover">
+    <img src="img/pafivisuimg/pasivisu.webp" alt="A screenshot of PaFiVisu." class="cover-img" data-pagefind-meta="image[src], image_alt[alt]" />
+  </div>
+  
+  <div class="meta">
+    
+    <div class="categories text-uppercase">
+    
+      <a href="/Kaustubh/categories/Project/">Project</a>
+    
+    </div>
+    
+
+    
+    <time class="date" datetime="2025-07-26T17:27:58+05:30">
+      July 26, 2025
+    </time>
+    
+
+    <h1 class="title" data-pagefind-meta="title">PaFiVisu - Pathfinding Algorithm Visualizer</h1>
+  </div>
+
+  <div class="content">
+    <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>PaFiVisu is a modern web-based pathfinding algorithm visualizer built with Vanilla JavaScript and Tailwind CSS. It provides an interactive 2D grid to visualize algorithms like Breadth-First Search, Depth-First Search, Dijkstra, and A* in real time with smooth animations.</p>
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><ul>
+<li>Interactive 2D Grid lets you add&#x2F;remove walls and set start&#x2F;end nodes with clicks.</li>
+<li>Supports BFS, DFS, Dijkstra, and A* (Manhattan heuristic) algorithms.</li>
+<li>Step-by-step animated visualization of node exploration and path-finding.</li>
+<li>Speed control slider from fast to slow animation.</li>
+<li>Random maze generation for maze and wall patterns.</li>
+<li>Light&#x2F;dark mode toggle for user comfort.</li>
+<li>Responsive UI designed for both desktop and mobile.</li>
+<li>Clean pastel theme design with Tailwind CSS styling.</li>
+</ul>
+<h2 id="Technology-Stack"><a href="#Technology-Stack" class="headerlink" title="Technology Stack"></a>Technology Stack</h2><ul>
+<li>Vanilla JavaScript (ES Modules)</li>
+<li>Tailwind CSS (via CDN)</li>
+<li>HTML5</li>
+</ul>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Open <code>index.html</code> directly in any modern browser; no build or server setup required. Use the control panel to set start&#x2F;end points, add walls, select algorithms, adjust speed, generate mazes, and toggle themes.</p>
+<h2 id="Future-Enhancements"><a href="#Future-Enhancements" class="headerlink" title="Future Enhancements"></a>Future Enhancements</h2><ul>
+<li>Add customization for grid size and colors.</li>
+<li>Build in new algorithms for extended learning.</li>
+</ul>
+<hr>
+<div class="carousel">
+  <img src="/Kaustubh/img/pafivisuimg/pasivisu.webp" class="carousel-item" />
+  <figure>
+    <img
+      src="/Kaustubh/img/pafivisuimg/darkvisu.webp"
+      alt="Dark theme support."
+      class="carousel-item"
+    />
+    <figcaption>Multiple pathfinding algorithms.</figcaption>
+  </figure>
+  <img src="/Kaustubh/img/pafivisuimg/img001.webp" class="carousel-item" />
+  <img src="/Kaustubh/img/pafivisuimg/img002.webp" class="carousel-item" />
+</div>
+
+<hr>
+<p>GitHub: <a target="_blank" rel="noopener" href="https://github.com/kc-codes42/PaFiVisu">https://github.com/kc-codes42/PaFiVisu</a></p>
+
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by Kaustubh Chauhan, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+    <p class="tags">
+      <i class="bi bi-tags icon"></i>
+      
+      <a href="/Kaustubh/tags/pathfinding/" class="tag">#pathfinding</a>
+      
+      <a href="/Kaustubh/tags/algorithm/" class="tag">#algorithm</a>
+      
+      <a href="/Kaustubh/tags/visualization/" class="tag">#visualization</a>
+      
+      <a href="/Kaustubh/tags/javascript/" class="tag">#javascript</a>
+      
+      <a href="/Kaustubh/tags/tailwindcss/" class="tag">#tailwindcss</a>
+      
+    </p>
+    
+    
+  </div>
+  
+
+  <div class="container post-prev-next" data-pagefind-ignore>
+    
+    <a href="/Kaustubh/2025/08/28/vaccis/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">Offline AI Voice Assistant with Avatar - A Fully Local AI Companion</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/Kaustubh/2025/07/03/sortvisu/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">SortSage - Sorting Algorithm Visualizer</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/Kaustubh/" class="item">Home</a>
+        
+        <a href="/Kaustubh/archives" class="item">Archives</a>
+        
+        <a href="/Kaustubh/tags" class="item">Tags</a>
+        
+        <a href="/Kaustubh/categories" class="item">Categories</a>
+        
+        <a href="/Kaustubh/search" class="item">Search</a>
+        
+        <a href="/Kaustubh/projects" class="item">Projects</a>
+        
+        <a href="/Kaustubh/resume" class="item">Resume</a>
+        
+        <a href="/Kaustubh/about" class="item">About</a>
+        
+        <a href="/Kaustubh/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/kc-codes42/SortSage" class="item">SortSage</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/kc-codes42/PaFiVisu" class="item">PaFiVisu</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/kc-codes42" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kaustubh-chauhan-5304b2252/" class="item">LinkedIn</a>
+        
+        <a href="mailto:kaustubhchauhan308@gmail.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 Kaustubh Chauhan</span>
+    
+    <br>
+    <span class="footer-extra-description">Feel free to reach out via GitHub, LinkedIn, or email.</span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/Kaustubh/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/Kaustubh/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>
