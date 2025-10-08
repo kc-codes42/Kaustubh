@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>YouLoader - A Local YouTube Downloader with Flask and yt-dlp - Kaustubh Chauhan</title>
+  
+    <link rel="shortcut icon" href="/Kaustubh/img/mypfp1-modified.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  <meta name="description" content="ConceptYouLoader is a self-hosted YouTube downloader designed to run entirely on local infrastructure. The application provides a web-based interface for extracting video and audio content from YouTub">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YouLoader - A Local YouTube Downloader with Flask and yt-dlp">
+<meta property="og:url" content="https://kc-codes42.github.io/Kaustubh/2025/04/08/youloader_blog/index.html">
+<meta property="og:site_name" content="Kaustubh Chauhan">
+<meta property="og:description" content="ConceptYouLoader is a self-hosted YouTube downloader designed to run entirely on local infrastructure. The application provides a web-based interface for extracting video and audio content from YouTub">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/img/youloaderimg/youloadercover.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/img/youloaderimg/flowyouloader.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/img/youloaderimg/formatselection.webp">
+<meta property="og:image" content="https://kc-codes42.github.io/Kaustubh/img/youloaderimg/downloadprogress.webp">
+<meta property="article:published_time" content="2025-04-08T08:30:00.000Z">
+<meta property="article:modified_time" content="2025-10-08T14:21:46.878Z">
+<meta property="article:author" content="Kaustubh Chauhan">
+<meta property="article:tag" content="development">
+<meta property="article:tag" content="flask">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="web-application">
+<meta property="article:tag" content="youtube">
+<meta property="article:tag" content="yt-dlp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kc-codes42.github.io/Kaustubh/img/youloaderimg/youloadercover.webp">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/var.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/main.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/typography.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/nav.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/footer.css">
+
+  
+<link rel="stylesheet" href="/Kaustubh/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/Kaustubh/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/Kaustubh/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<script src="/Kaustubh/js/head.js"></script>
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/Kaustubh/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+    data-nav-blur-gradient="true"
+  >
+    
+<script src="/Kaustubh/js/body-top.js"></script>
+
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    
+
+<div class="nav-mask">
+  <div order="1"></div>
+  <div order="2"></div>
+  <div order="3"></div>
+  <div order="4"></div>
+  <div order="5"></div>
+  <div order="6"></div>
+</div>
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/Kaustubh/">kc_codes</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/Kaustubh/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/Kaustubh/friends" style="--index: 1">Friends</a>
+      
+      <a class="nav-item" href="/Kaustubh/projects" style="--index: 2">Projects</a>
+      
+      <a class="nav-item" href="/Kaustubh/archives" style="--index: 3">Archives</a>
+      
+      <a class="nav-item" href="/Kaustubh/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/kc-codes42" style="--index: 5"><i class="bi bi-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.linkedin.com/in/kaustubh-chauhan-5304b2252/" style="--index: 6"><i class="bi bi-linkedin"></i></a>
+      
+      <a class="nav-item is-icon" href="/Kaustubh/search" style="--index: 7"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" data-pagefind-body>
+      
+<article class="post">
+  
+  <div class="cover">
+    <img src="/Kaustubh/img/youloaderimg/youloadercover.webp" alt="Screenshot of YouLoader&#39;s clean web interface showing the download options panel." class="cover-img" data-pagefind-meta="image[src], image_alt[alt]" />
+  </div>
+  
+  <div class="meta">
+    
+    <div class="categories text-uppercase">
+    
+      <a href="/Kaustubh/categories/Project/">Project</a>
+    
+    </div>
+    
+
+    
+    <time class="date" datetime="2025-04-08T14:00:00+05:30">
+      April 8, 2025
+    </time>
+    
+
+    <h1 class="title" data-pagefind-meta="title">YouLoader - A Local YouTube Downloader with Flask and yt-dlp</h1>
+  </div>
+
+  <div class="content">
+    <h2 id="Concept"><a href="#Concept" class="headerlink" title="Concept"></a>Concept</h2><p>YouLoader is a <strong>self-hosted YouTube downloader</strong> designed to run entirely on local infrastructure. The application provides a web-based interface for extracting video and audio content from YouTube, eliminating the need for browser extensions or third-party download services.</p>
+<p>The architecture prioritizes simplicity and privacy — all downloads are processed server-side using <a target="_blank" rel="noopener" href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a>, with no external API dependencies or data collection. Users interact through a responsive frontend that communicates with a lightweight Flask backend.</p>
+<p align="center">
+  <img src="/Kaustubh/img/youloaderimg/youloadercover.webp" alt="The main YouLoader interface displaying URL input field, format selection dropdown, and download progress indicator." />
+</p>
+
+<hr>
+<h2 id="Design-and-Architecture"><a href="#Design-and-Architecture" class="headerlink" title="Design and Architecture"></a>Design and Architecture</h2><p>The system follows a clean separation between frontend and backend layers:</p>
+<ul>
+<li><strong>Flask Web Server</strong> - Handles HTTP routing, format requests, and download orchestration</li>
+<li><strong>yt-dlp Integration</strong> - Extracts available formats and manages download streams</li>
+<li><strong>FFmpeg Pipeline</strong> - Enables audio extraction and format conversion</li>
+<li><strong>File Organization System</strong> - Automatically routes downloads to audio or video directories</li>
+</ul>
+<p>The application exposes three primary endpoints:</p>
+<ol>
+<li><strong>Format Discovery</strong> (<code>/formats</code>) - Retrieves all available download options for a given URL</li>
+<li><strong>Download Execution</strong> (<code>/download</code>) - Initiates the download with specified format parameters</li>
+<li><strong>Update Mechanism</strong> (<code>/update</code>) - Refreshes yt-dlp to the latest version</li>
+</ol>
+<p align="center">
+  <img src="/Kaustubh/img/youloaderimg/flowyouloader.webp" alt="Flow diagram showing the request-response cycle from URL submission through format selection to local file storage." />
+</p>
+
+<p>All downloads are routed to a dedicated <code>youtubestuff</code> directory, with audio files separated from video files for organized storage.</p>
+<hr>
+<h2 id="Interface-and-Experience"><a href="#Interface-and-Experience" class="headerlink" title="Interface and Experience"></a>Interface and Experience</h2><p>The web interface is built with vanilla JavaScript and styled using modern CSS. The layout consists of three functional zones:</p>
+<ol>
+<li><strong>Input Section</strong> - URL entry and format retrieval</li>
+<li><strong>Format Selector</strong> - Dropdown filters for audio&#x2F;video&#x2F;best quality</li>
+<li><strong>Status Display</strong> - Real-time progress feedback</li>
+</ol>
+<p align="center">
+  <img src="/Kaustubh/img/youloaderimg/formatselection.webp" alt="Close-up of the format selection panel showing quality options, file sizes, and download buttons." />
+</p>
+
+<h3 id="Visual-Design"><a href="#Visual-Design" class="headerlink" title="Visual Design"></a>Visual Design</h3><ul>
+<li>Minimalist color scheme with high contrast for readability</li>
+<li>Responsive grid that adapts to mobile and desktop viewports</li>
+<li>Dynamic format cards with size indicators and quality labels</li>
+<li>Persistent status bar for download progress tracking</li>
+</ul>
+<hr>
+<h2 id="Technical-Deep-Dive"><a href="#Technical-Deep-Dive" class="headerlink" title="Technical Deep Dive"></a>Technical Deep Dive</h2><h3 id="Backend-Implementation"><a href="#Backend-Implementation" class="headerlink" title="Backend Implementation"></a>Backend Implementation</h3><p>The Flask server initializes with automatic directory creation for audio and video storage. Route handlers are designed for asynchronous operation, allowing concurrent downloads without blocking the main thread.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">download_folder = os.path.join(os.getcwd(), <span class="string">&#x27;youtubestuff&#x27;</span>)</span><br><span class="line">audio_folder = os.path.join(download_folder, <span class="string">&#x27;audio&#x27;</span>)</span><br><span class="line">video_folder = os.path.join(download_folder, <span class="string">&#x27;video&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Format-Detection"><a href="#Format-Detection" class="headerlink" title="Format Detection"></a>Format Detection</h3><p>When a URL is submitted, yt-dlp extracts metadata without downloading. The system parses available formats and returns structured JSON containing:</p>
+<ul>
+<li>Format ID and resolution</li>
+<li>File size (when available)</li>
+<li>Audio&#x2F;video codec information</li>
+<li>Quality classification</li>
+</ul>
+<h3 id="Download-Processing"><a href="#Download-Processing" class="headerlink" title="Download Processing"></a>Download Processing</h3><p>The download handler determines the appropriate output directory based on format type (audio-only vs. video). Files are saved with sanitized filenames and original metadata preserved.</p>
+<h3 id="Automatic-Updates"><a href="#Automatic-Updates" class="headerlink" title="Automatic Updates"></a>Automatic Updates</h3><p>The application includes a built-in updater that executes <code>pip install --upgrade yt-dlp</code> through a subprocess, ensuring compatibility with YouTube’s frequently changing infrastructure.</p>
+<p align="center">
+  <img src="/Kaustubh/img/youloaderimg/downloadprogress.webp" alt="Status bar showing active download with percentage completion and file destination." />
+</p>
+
+<hr>
+<h2 id="Development-Log"><a href="#Development-Log" class="headerlink" title="Development Log"></a>Development Log</h2><ul>
+<li><strong>Initial Release:</strong> Core Flask application with basic download functionality</li>
+<li><strong>Format System:</strong> Added support for format filtering and quality selection</li>
+<li><strong>File Organization:</strong> Implemented automatic audio&#x2F;video separation</li>
+<li><strong>Progress Tracking:</strong> Integrated real-time status updates</li>
+<li><strong>Setup Automation:</strong> Created <code>setup.py</code> for dependency management</li>
+<li><strong>Update Mechanism:</strong> Built-in yt-dlp updater for maintenance</li>
+</ul>
+<hr>
+<h2 id="Usage-Workflow"><a href="#Usage-Workflow" class="headerlink" title="Usage Workflow"></a>Usage Workflow</h2><p>The application follows a straightforward interaction pattern:</p>
+<ol>
+<li><strong>Initialization</strong> - Server starts on <code>localhost:5000</code> by default</li>
+<li><strong>URL Submission</strong> - User pastes YouTube link and requests available formats</li>
+<li><strong>Format Selection</strong> - Available options are displayed with filtering capabilities</li>
+<li><strong>Download Execution</strong> - User selects desired format and initiates download</li>
+<li><strong>Completion</strong> - File is saved to the appropriate directory with status confirmation</li>
+</ol>
+<div class="container view-animation-demo">
+  <div class="dot"></div>
+</div>
+
+<style>
+@keyframes view-animation-demo-animation {
+  0% {
+    opacity: 0.6;
+    width: 0%;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+    width: 100%;
+  }
+}
+
+.view-animation-demo > .dot {
+  background-color: var(--color-text-primary);
+  height: 4px;
+  border-radius: 2px;
+
+  animation: view-animation-demo-animation linear both;
+  animation-timeline: view(block);
+}
+</style>
+
+<hr>
+<h2 id="Requirements-and-Setup"><a href="#Requirements-and-Setup" class="headerlink" title="Requirements and Setup"></a>Requirements and Setup</h2><h3 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h3><ul>
+<li>Python 3.7 or higher</li>
+<li><a target="_blank" rel="noopener" href="https://flask.palletsprojects.com/">Flask</a> web framework</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> downloader</li>
+<li><a target="_blank" rel="noopener" href="https://ffmpeg.org/">FFmpeg</a> for audio extraction</li>
+</ul>
+<h3 id="Installation-Options"><a href="#Installation-Options" class="headerlink" title="Installation Options"></a>Installation Options</h3><p><strong>Automated Setup:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python setup.py</span><br><span class="line">python youtube_downloader.py</span><br></pre></td></tr></table></figure>
+
+<p><strong>Manual Installation:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install flask yt-dlp</span><br><span class="line"><span class="comment"># Install FFmpeg separately</span></span><br><span class="line">python youtube_downloader.py</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Current-Status"><a href="#Current-Status" class="headerlink" title="Current Status"></a>Current Status</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> Flask-based web server</li>
+<li><input checked="" disabled="" type="checkbox"> yt-dlp integration with format discovery</li>
+<li><input checked="" disabled="" type="checkbox"> Audio&#x2F;video file organization</li>
+<li><input checked="" disabled="" type="checkbox"> Real-time download progress</li>
+<li><input checked="" disabled="" type="checkbox"> Format filtering system</li>
+<li><input checked="" disabled="" type="checkbox"> Automatic yt-dlp updates</li>
+<li><input disabled="" type="checkbox"> Download queue management</li>
+<li><input disabled="" type="checkbox"> Playlist support</li>
+<li><input disabled="" type="checkbox"> Custom output naming templates</li>
+</ul>
+<div class="container si-demo">
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+</div>
+
+<style>
+.si-demo {
+  display: flex;
+}
+
+@keyframes si-demo-animation {
+  0% {
+    opacity: 0;
+    translate: 0 16px;
+  }
+  50% {
+    opacity: 1;
+    translate: 0;
+  }
+  100% {
+    opacity: 0;
+    translate: 0 -16px;
+  }
+}
+
+.si-demo > .item {
+  flex-grow: 1;
+  height: 48px;
+  background-color: var(--color-text-primary);
+  animation: si-demo-animation 2s infinite;
+  animation-delay: calc(sibling-index() * 0.1s);
+
+  --r: var(--radius-small);
+}
+
+.si-demo > .item:first-child {
+  border-top-left-radius: var(--r);
+  border-bottom-left-radius: var(--r);
+}
+
+.si-demo > .item:last-child {
+  border-top-right-radius: var(--r);
+  border-bottom-right-radius: var(--r);
+}
+</style>
+
+<hr>
+<h2 id="Future-Goals"><a href="#Future-Goals" class="headerlink" title="Future Goals"></a>Future Goals</h2><ul>
+<li>Implement batch download capabilities for playlists</li>
+<li>Add support for custom filename templates</li>
+<li>Integrate download history tracking</li>
+<li>Create configuration panel for default settings</li>
+<li>Add subtitle download options</li>
+<li>Implement bandwidth throttling controls</li>
+</ul>
+<hr>
+<h2 id="Security-Considerations"><a href="#Security-Considerations" class="headerlink" title="Security Considerations"></a>Security Considerations</h2><p>This application is designed exclusively for local network use. Exposing the server to the public internet without authentication mechanisms is strongly discouraged. All downloads are processed on the host machine, with no telemetry or external data transmission.</p>
+<hr>
+<h2 id="Troubleshooting"><a href="#Troubleshooting" class="headerlink" title="Troubleshooting"></a>Troubleshooting</h2><p><strong>Format Discovery Issues:</strong><br>Verify URL validity and ensure yt-dlp is updated to the latest version.</p>
+<p><strong>Download Failures:</strong><br>Check internet connectivity and FFmpeg installation. Some formats require FFmpeg for post-processing.</p>
+<p><strong>Port Conflicts:</strong><br>If port 5000 is occupied, modify the Flask configuration to use an alternative port.</p>
+<p><strong>Missing Formats:</strong><br>Install FFmpeg to unlock additional format options and audio extraction capabilities.</p>
+<hr>
+<h2 id="Acknowledgements"><a href="#Acknowledgements" class="headerlink" title="Acknowledgements"></a>Acknowledgements</h2><p>This project integrates several established open-source tools:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> - YouTube download engine</li>
+<li><a target="_blank" rel="noopener" href="https://flask.palletsprojects.com/">Flask</a> - Python web framework</li>
+<li><a target="_blank" rel="noopener" href="https://ffmpeg.org/">FFmpeg</a> - Multimedia processing toolkit</li>
+</ul>
+<hr>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>Released under the MIT License.</p>
+<p><strong>Author:</strong> <a target="_blank" rel="noopener" href="https://github.com/kc-codes42">kc-codes42</a><br><strong>Repository:</strong> <a target="_blank" rel="noopener" href="https://github.com/kc-codes42">GitHub</a></p>
+<hr>
+<h2 id="File-Structure"><a href="#File-Structure" class="headerlink" title="File Structure"></a>File Structure</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">youtube-downloader/</span><br><span class="line">├── youtube_downloader.py    # Flask application server</span><br><span class="line">├── setup.py                 # Dependency installer</span><br><span class="line">└── youtubestuff/            # Download directory (auto-created)</span><br><span class="line">    ├── audio/               # Audio-only files</span><br><span class="line">    └── video/               # Video files with audio</span><br></pre></td></tr></table></figure>
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by Kaustubh Chauhan, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+    <p class="tags">
+      <i class="bi bi-tags icon"></i>
+      
+      <a href="/Kaustubh/tags/development/" class="tag">#development</a>
+      
+      <a href="/Kaustubh/tags/python/" class="tag">#python</a>
+      
+      <a href="/Kaustubh/tags/flask/" class="tag">#flask</a>
+      
+      <a href="/Kaustubh/tags/web-application/" class="tag">#web-application</a>
+      
+      <a href="/Kaustubh/tags/youtube/" class="tag">#youtube</a>
+      
+      <a href="/Kaustubh/tags/yt-dlp/" class="tag">#yt-dlp</a>
+      
+    </p>
+    
+    
+  </div>
+  
+
+  <div class="container post-prev-next" data-pagefind-ignore>
+    
+    <a href="/Kaustubh/2025/07/03/sortvisu/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">SortSage - Sorting Algorithm Visualizer</h3>
+      </div>
+    </a>
+    
+    <a class="prev"></a>
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/Kaustubh/" class="item">Home</a>
+        
+        <a href="/Kaustubh/archives" class="item">Archives</a>
+        
+        <a href="/Kaustubh/tags" class="item">Tags</a>
+        
+        <a href="/Kaustubh/categories" class="item">Categories</a>
+        
+        <a href="/Kaustubh/search" class="item">Search</a>
+        
+        <a href="/Kaustubh/projects" class="item">Projects</a>
+        
+        <a href="/Kaustubh/resume" class="item">Resume</a>
+        
+        <a href="/Kaustubh/about" class="item">About</a>
+        
+        <a href="/Kaustubh/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/kc-codes42/SortSage" class="item">SortSage</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/kc-codes42/PaFiVisu" class="item">PaFiVisu</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/kc-codes42" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kaustubh-chauhan-5304b2252/" class="item">LinkedIn</a>
+        
+        <a href="mailto:kaustubhchauhan308@gmail.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 Kaustubh Chauhan</span>
+    
+    <br>
+    <span class="footer-extra-description">Feel free to reach out via GitHub, LinkedIn, or email.</span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/Kaustubh/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/Kaustubh/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>
